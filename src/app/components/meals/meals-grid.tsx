@@ -1,17 +1,7 @@
-import MealItem from './meal-item'
-import classes from './meals-grid.module.css'
+import { IProps } from '@/types/type';
+import MealItem from './meal-item';
+import classes from './meals-grid.module.css';
 
-interface IMeal {
-  id: number
-  title: string
-  slug: string
-  image: string
-  summary: string
-  creator: string
-}
-interface IProps {
-  meals: Array<IMeal>
-}
 export default function MealsGrid({ meals }: IProps) {
 
   return (
@@ -22,5 +12,5 @@ export default function MealsGrid({ meals }: IProps) {
         </li>
       ))}
     </ul>
-  )
+  );
 }
