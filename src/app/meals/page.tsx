@@ -1,5 +1,4 @@
 import { getMeals } from '@/lib/meals';
-import { IMeal } from '@/types/type';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import MealsGrid from '../components/meals/meals-grid';
@@ -7,14 +6,11 @@ import MealsLoadingPage from '../loading-out';
 import classes from './page.module.css';
 
 const Meals = async () => {
-  const meals: Array<IMeal> & any = await getMeals();
-
+  const meals = await getMeals();
   return <MealsGrid meals={meals} />;
 };
 
 export default async function MealPage() {
-
-
   return (
     <>
       <header className={classes.header}>
