@@ -22,6 +22,7 @@ export default function ImagePicker({ label, name }: ImageProps) {
     const file = event.target.files && event.target.files[0];
 
     if (!file) {
+      setPickedImage(null); // Reset the previewed image if no image was selected
       return;
     }
 
