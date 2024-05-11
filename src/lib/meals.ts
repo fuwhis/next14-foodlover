@@ -7,12 +7,7 @@ export async function getMeals() {
   return db.prepare('SELECT * FROM meals').all();
 }
 
-export async function getMealsDetailBySlug(slug: string) {
+export async function getMealDetailBySlug(slug: string) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   return db.prepare('SELECT * FROM meals WHERE slug = ?').get(slug);
-};
-
-export async function getMealsDetailById(id: number) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  return db.prepare('SELECT * FROM meals WHERE id = ?').get(id);
 };
