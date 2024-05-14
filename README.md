@@ -53,11 +53,11 @@ Now that the bucket was created, you can already add some files to it => The dum
 
 To do that, select your created bucket and click the "Upload" button. Then drag & drop those images into the box and confirm the upload.
 
-![test](/assets/images/tutorials/2023-12-05_16-08-04-6bfba34e3c75a4d22777d0f78186caa4.jpg)
+![Upload the dummy image files](/assets/images/tutorials/2023-12-05_16-08-04-6bfba34e3c75a4d22777d0f78186caa4.jpg)
 
 Thereafter, all those images should be in the bucket:
 
-![/assets/images/tutorials/2023-12-05_16-08-04-10f2210199bbbd7e4e28dea2f86f8438.jpg]
+![Upload the dummy image files](/assets/images/tutorials/2023-12-05_16-08-04-10f2210199bbbd7e4e28dea2f86f8438.jpg)
 
 ##### 4. Configure the bucket for serving the images
 
