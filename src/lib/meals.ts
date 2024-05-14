@@ -25,7 +25,7 @@ export async function saveMeal(meal: IMealFormData) {
 
   const extension = meal.image.name.split('.').pop();
   const fileName = `${meal.slug}.${extension}`;
-  const filePath = `/images/${fileName}`;
+  const filePath = `${fileName}`;
 
   const bufferedImage = await meal.image.arrayBuffer();
 
