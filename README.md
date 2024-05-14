@@ -53,7 +53,7 @@ Now that the bucket was created, you can already add some files to it => The dum
 
 To do that, select your created bucket and click the "Upload" button. Then drag & drop those images into the box and confirm the upload.
 
-![/assets/images/tutorials/2023-12-05_16-08-04-6bfba34e3c75a4d22777d0f78186caa4.jpg]
+![test](/assets/images/tutorials/2023-12-05_16-08-04-6bfba34e3c75a4d22777d0f78186caa4.jpg)
 
 Thereafter, all those images should be in the bucket:
 
@@ -69,7 +69,7 @@ But for our purposes here, we must update the bucket settings to make sure the i
 
 To do that, as a first step, click on the "Permissions" tab and "Edit" the "Block public access" setting:
 
-![/assets/images/tutorials/2023-12-05_16-16-13-182f4df18025905a2bb63d40d9649228.jpg]
+![Configure the bucket for serving the images](https://github.com/fuwhis/next14-foodlover/blob/feat/uploaded-image-with-awsS3/assets/images/tutorials/2023-12-05_16-16-13-182f4df18025905a2bb63d40d9649228.jpg)
 
 Then, disable the "Block all public access" checkbox (and with it, all other checkboxes) and select "Save Changes".
 
