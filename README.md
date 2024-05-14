@@ -29,8 +29,88 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## To serve the storing uploaded images on in the cloud (AWS S3)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+##### 1. Create an AWS account
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In order to use AWS S3, you need an AWS account. You can create one here.
+
+##### 2. Create a S3 bucket
+
+Once you created an account (and you logged in), you should navigate to the S3 console to create a so-called "bucket".
+
+"Buckets" are containers that can be used to store files (side-note: you can store any files - not just images).
+
+Every bucket must have a globally unique name, hence you should become creative. You could, for example, use a name like **<your-name>-nextjs-demo-users-image**.
+
+I'll use maxschwarzmueller-nextjs-demo-users-image in this example here.
+
+When creating the bucket, you can confirm all the default settings - the name's the only thing you should set.
+
+##### 3. Upload the dummy image files
+
+Now that the bucket was created, you can already add some files to it => The dummy images that were previously stored locally in the public/images folder.
+
+To do that, select your created bucket and click the "Upload" button. Then drag & drop those images into the box and confirm the upload.
+
+![/assets/images/tutorials/2023-12-05_16-08-04-6bfba34e3c75a4d22777d0f78186caa4.jpg]
+
+Thereafter, all those images should be in the bucket:
+
+![/assets/images/tutorials/2023-12-05_16-08-04-10f2210199bbbd7e4e28dea2f86f8438.jpg]
+
+##### 4. Configure the bucket for serving the images
+
+Now that you uploaded those dummy images, it's time to configure the bucket such that the images can be loaded from the NextJS website.
+
+Because, by default, this is not possible! By default, S3 buckets are "locked down" and the files in there are secure & not accessible by anyone else.
+
+But for our purposes here, we must update the bucket settings to make sure the images can be viewed by everyone.
+
+To do that, as a first step, click on the "Permissions" tab and "Edit" the "Block public access" setting:
+
+![/assets/images/tutorials/2023-12-05_16-16-13-182f4df18025905a2bb63d40d9649228.jpg]
+
+Then, disable the "Block all public access" checkbox (and with it, all other checkboxes) and select "Save Changes".
+
+Type "confirm" into the confirmation overlay once it pops up.
+
+That's not all though - as a next (and final step), you must add a so-called "Bucket Policy". That's an AWS-specific policy document that allows you to manage the permissions of the objects stored in the bucket.
+
+You can add such a "Bucket Policy" right below the "Block all public access" area, still on the "Permissions" tab:
+
+Click "Edit" and insert the following bucket policy into the box:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"
+            ]
+        }
+    ]
+}
+```
+
+Replace `DOC-EXAMPLE-BUCKET` with your bucket name (maxschwarzmueller-nextjs-demo-users-image in my case).
+
+Then, click "Save Changes".
+
+Now the bucket is configure to grant access to all objects inside of it to anyone who has a URL pointing to one of those objects.
+
+Therefore, you should now of course not add any files into the bucket that you don't want to share with the world!
+
+To test if everything works, click on one of the images you uploaded (in the bucket).
+
+Then click on the "Object URL" - if opening it works (and you can see the image), you configured everything as needed.
+
+![/assets/images/tutorials/2023-12-05_16-24-53-464554545d10936f87d523715350d1f0.jpg]
