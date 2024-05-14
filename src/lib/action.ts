@@ -1,7 +1,7 @@
 'use server';
 
 import { IMealFormData } from "@/types/type";
-// import { revalidatePath } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { saveMeal } from "./meals";
 
@@ -35,6 +35,6 @@ export async function shareMeal(prevState: FormData, formData: FormData) {
   }
 
   await saveMeal(meal);
-  // revalidatePath('/meals', 'layout'); // cache revalidation layout
+  revalidatePath('/meals', 'layout'); // cache revalidation layout
   redirect('/meals');
 };
