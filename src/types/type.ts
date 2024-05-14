@@ -17,7 +17,7 @@ interface IImageData {
 }
 
 interface IMealFormData {
-  slug: string;
+  slug?: string;
   title: string;
   summary: string;
   instructions: string;
@@ -30,5 +30,19 @@ interface IProps {
   meals: Array<IMeal>;
 }
 
-export type { IImageData, IMeal, IMealFormData, IProps };
+interface IError {
+  message: string;
+}
+
+interface IDynamicMetadata {
+  title: string;
+  description: string;
+}
+
+interface MealMetadata {
+  title: string;
+  summary: string;
+}
+
+export type { IDynamicMetadata, IError, IImageData, IMeal, IMealFormData, IProps, MealMetadata };
 

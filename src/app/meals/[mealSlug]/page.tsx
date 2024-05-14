@@ -1,4 +1,5 @@
 import { getMealDetailBySlug } from '@/lib/meals';
+import { IDynamicMetadata, MealMetadata } from '@/types/type';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import classes from './page.module.css';
@@ -6,6 +7,19 @@ import classes from './page.module.css';
 interface MealsDetailPageProps {
   params: {
     mealSlug: string;
+  };
+}
+
+export async function generateMetadata({ params }: MealsDetailPageProps): Promise<IDynamicMetadata> {
+  const meal: MealMetadata & any = getMealDetailBySlug(params.mealSlug);
+
+  if (!meal) {
+    notFound();
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary
   };
 }
 
@@ -21,7 +35,11 @@ export default async function MealDetailPage({ params }: MealsDetailPageProps) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} alt={meal.title} fill />
+          <Image
+            src={`https://fuwhis-nextjs-demo-users-image.s3.amazonaws.com/images/${meal.image}`}
+            alt={meal.title}
+            fill
+          />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
