@@ -113,4 +113,6 @@ To test if everything works, click on one of the images you uploaded (in the buc
 
 Then click on the "Object URL" - if opening it works (and you can see the image), you configured everything as needed.
 
-![/assets/images/tutorials/2023-12-05_16-24-53-464554545d10936f87d523715350d1f0.jpg]
+!(Save)[/assets/images/tutorials/2023-12-05_16-24-53-464554545d10936f87d523715350d1f0.jpg]
+
+##### 5. Update the NextJS code to use those S3 images
