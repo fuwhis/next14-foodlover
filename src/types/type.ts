@@ -34,5 +34,15 @@ interface IError {
   message: string;
 }
 
-export type { IError, IImageData, IMeal, IMealFormData, IProps };
+interface IDynamicMetadata {
+  title: string;
+  description: string;
+}
+
+interface MealMetadata {
+  title: string;
+  summary: string;
+}
+
+export type { IDynamicMetadata, IError, IImageData, IMeal, IMealFormData, IProps, MealMetadata };
 
