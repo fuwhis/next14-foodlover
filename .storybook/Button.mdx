@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas } from "@storybook/blocks";
+
+import * as ButtonStories from "./Button.stories";
+
+<Meta title="Example/Buttons" />
+
+# Button Component
+
+The button component is used to trigger an action.
+
+## Props
+
+- `label` - String
+- `backgroundColor` - String
+
+## Usage
+
+```jsx
+<button></button>
+```
+
+<Canvas>
+  <Story of={ButtonStories.Success} />
+</Canvas>
